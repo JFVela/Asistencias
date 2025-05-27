@@ -1,30 +1,32 @@
-import { getStudentsBySection } from "../data/students-data"
+import { getStudentsBySection } from "../data/students-data";
 
 export function SectionSelector({ onSectionSelect, onStudentsLoad }) {
   const sections = [
-    "1ro Secundaria A",
-    "1ro Secundaria B",
-    "2do Secundaria A",
-    "2do Secundaria B",
-    "3ro Secundaria A",
-    "3ro Secundaria B",
-    "4to Secundaria A",
-    "4to Secundaria B",
-    "5to Secundaria A",
-    "5to Secundaria B",
-  ]
+    // Primaria
+    "4to Primaria Britanico",
+    "5to Primaria Carrion",
+    "5to Primaria Britanico",
+    "6to Primaria Carmen Carrion",
+    "6to Primaria Liliana Carrion",
+    "6to Primaria Britanico",
+
+    // Secundaria
+    "1ro Secundaria Carrion",
+    "1ro Secundaria Britanico",
+    "2do Secundaria Carrion",
+  ];
 
   const handleSectionSelect = (section) => {
-    const students = getStudentsBySection(section)
-    onStudentsLoad(students)
-    onSectionSelect(section)
-  }
+    const students = getStudentsBySection(section);
+    onStudentsLoad(students);
+    onSectionSelect(section);
+  };
 
   const gridStyle = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
     gap: "16px",
-  }
+  };
 
   const cardStyle = {
     backgroundColor: "white",
@@ -33,13 +35,13 @@ export function SectionSelector({ onSectionSelect, onStudentsLoad }) {
     transition: "all 0.3s ease",
     cursor: "pointer",
     border: "2px solid transparent",
-  }
+  };
 
   const cardHoverStyle = {
     boxShadow: "0 8px 16px rgba(0, 0, 0, 0.15)",
     transform: "translateY(-2px)",
     borderColor: "#2196f3",
-  }
+  };
 
   const buttonStyle = {
     width: "100%",
@@ -56,12 +58,12 @@ export function SectionSelector({ onSectionSelect, onStudentsLoad }) {
     fontWeight: "600",
     color: "#333",
     transition: "color 0.3s",
-  }
+  };
 
   const iconStyle = {
     fontSize: "32px",
     color: "#2196f3",
-  }
+  };
 
   return (
     <div style={gridStyle}>
@@ -70,20 +72,20 @@ export function SectionSelector({ onSectionSelect, onStudentsLoad }) {
           key={section}
           style={cardStyle}
           onMouseOver={(e) => {
-            Object.assign(e.currentTarget.style, cardHoverStyle)
+            Object.assign(e.currentTarget.style, cardHoverStyle);
           }}
           onMouseOut={(e) => {
-            Object.assign(e.currentTarget.style, cardStyle)
+            Object.assign(e.currentTarget.style, cardStyle);
           }}
         >
           <button
             onClick={() => handleSectionSelect(section)}
             style={buttonStyle}
             onMouseOver={(e) => {
-              e.target.style.color = "#2196f3"
+              e.target.style.color = "#2196f3";
             }}
             onMouseOut={(e) => {
-              e.target.style.color = "#333"
+              e.target.style.color = "#333";
             }}
           >
             <span style={iconStyle}>🎓</span>
@@ -92,5 +94,5 @@ export function SectionSelector({ onSectionSelect, onStudentsLoad }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
